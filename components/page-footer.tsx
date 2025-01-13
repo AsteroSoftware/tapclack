@@ -20,7 +20,7 @@ export function PageFooter() {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="https://github.com/GBerghoff/tapclack" 
+                  href="https://github.com/AsteroSoftware/tapclack" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
@@ -31,7 +31,7 @@ export function PageFooter() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/GBerghoff/tapclack/issues/new" 
+                  href="https://github.com/AsteroSoftware/tapclack/issues/new" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -41,7 +41,7 @@ export function PageFooter() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/GBerghoff/tapclack/blob/main/CONTRIBUTING.md" 
+                  href="https://github.com/AsteroSoftware/tapclack/blob/main/CONTRIBUTING.md" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"

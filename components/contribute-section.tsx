@@ -29,7 +29,7 @@ export const ContributeSection = forwardRef<HTMLDivElement, ContributeSectionPro
             We&apos;re always looking for valuable resources to add to this list. If you know of a great tool, article, or resource that could benefit new engineers and computer scientists, we&apos;d love to hear about it!
           </p>
           <Button asChild>
-            <a href="https://github.com/GBerghoff/tapclack" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/AsteroSoftware/tapclack" target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" />
               Contribute on GitHub
             </a>
