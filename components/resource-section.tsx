@@ -1,16 +1,9 @@
-import { Link as LinkIcon } from 'lucide-react'
-import { Button } from "@/components/ui/button"
 import { ResourceCard } from '@/components/resource-card'
 import { Resource } from '@/lib/types'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 interface ResourceSectionProps {
   title: string
+  categoryId?: string
   resources: Resource[]
   copiedLink: string | null
   copiedSectionLink: boolean
@@ -18,11 +11,13 @@ interface ResourceSectionProps {
   onCopy: (link: string) => void
   onSectionCopy: () => void
   onView: (link: string) => void
+  onCategoryClick?: (categoryId: string) => void
   sectionRef: (el: HTMLDivElement | null) => void
 }
 
 export function ResourceSection({
   title,
+  categoryId,
   resources,
   copiedLink,
   copiedSectionLink,
@@ -30,8 +25,19 @@ export function ResourceSection({
   onCopy,
   onSectionCopy,
   onView,
+  onCategoryClick,
   sectionRef
 }: ResourceSectionProps) {
+  const handleTitleClick = () => {
+    if (categoryId) {
+      window.location.hash = categoryId;
+    }
+    onSectionCopy();
+    if (onCategoryClick && categoryId) {
+      onCategoryClick(categoryId);
+    }
+  };
+
   return (
     <section 
       ref={sectionRef}
@@ -40,36 +46,22 @@ export function ResourceSection({
       }`}
     >
       <div className="flex items-center gap-2 mb-4 group">
-        <h2 className="text-2xl font-semibold">
+        <h2 
+          className="text-2xl font-semibold cursor-pointer hover:text-primary transition-colors"
+          onClick={handleTitleClick}
+        >
           {title}
+          {copiedSectionLink && (
+            <span className="text-green-500 text-sm ml-4">Copied!</span>
+          )}
         </h2>
-        <TooltipProvider>
-          <Tooltip delayDuration={150}>
-            <TooltipTrigger asChild>
-              <Button
-                variant="link"
-                size="icon"
-                onClick={onSectionCopy}
-                className="opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 p-0"
-              >
-                {copiedSectionLink ? (
-                  <span className="text-green-500 text-sm ml-4">Copied!</span>
-                ) : (
-                  <LinkIcon className="h-4 w-4" />
-                )}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent className="tooltip-fast">
-              <p>Copy link to {title} section to clipboard</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
       </div>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {resources.map((resource) => (
           <ResourceCard
             key={resource.title}
             resource={resource}
+            categoryId={categoryId || ''}
             copiedLink={copiedLink}
             copyToClipboard={onCopy}
             markAsViewed={() => onView(resource.link)}

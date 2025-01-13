@@ -67,11 +67,13 @@ export default function EngineeringResources() {
     const element = sectionRefs.current[categoryId]
     if (!element) return
     
-    const navbarOffset = 80 // navbar height (64px) + some padding
-    const elementTop = element.getBoundingClientRect().top + window.pageYOffset - navbarOffset
+    const isMobile = window.innerWidth < 1024
+    const navbarOffset = isMobile ? 260 : 80
+    
+    const elementPosition = element.offsetTop - navbarOffset
 
     window.scrollTo({
-      top: elementTop,
+      top: elementPosition,
       behavior: 'smooth'
     })
   }
@@ -88,10 +90,10 @@ export default function EngineeringResources() {
     if (!element) return
     
     const navbarOffset = 80
-    const elementTop = element.getBoundingClientRect().top + window.pageYOffset - navbarOffset
+    const elementPosition = element.offsetTop - navbarOffset
 
     window.scrollTo({
-      top: elementTop,
+      top: elementPosition,
       behavior: 'smooth'
     })
   }
@@ -101,7 +103,15 @@ export default function EngineeringResources() {
   }
 
   const handleTapClackClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    history.pushState("", document.title, window.location.pathname);
+    setHighlightedSection(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const handleContributeClick = () => {
+    history.pushState("", document.title, window.location.pathname);
+    setHighlightedSection(null);
+    scrollToContribute();
   }
 
   return (
@@ -109,12 +119,12 @@ export default function EngineeringResources() {
       <div className="min-h-screen flex flex-col">
         <NavigationBar
           onTitleClick={handleTapClackClick}
-          onContributeClick={scrollToContribute}
+          onContributeClick={handleContributeClick}
         />
         <div className="flex-1 pt-16">
           <div className="container mx-auto px-4">
             <div className="lg:flex gap-8">
-              <aside className="mb-8 lg:mb-0">
+              <aside className="lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
                 <SectionNavigation
                   categories={categories}
                   activeSection={highlightedSection}
@@ -130,6 +140,7 @@ export default function EngineeringResources() {
                       <ResourceSection
                         key={category.id}
                         title={category.name}
+                        categoryId={category.id}
                         resources={categoryResources}
                         copiedLink={copiedLink}
                         copiedSectionLink={copiedCategoryLink === category.id}
@@ -137,6 +148,7 @@ export default function EngineeringResources() {
                         onCopy={copyToClipboard}
                         onSectionCopy={() => copyCategoryLink(category.id)}
                         onView={markAsViewed}
+                        onCategoryClick={scrollToSection}
                         sectionRef={(el: HTMLDivElement | null) => sectionRefs.current[category.id] = el}
                       />
                     )
