@@ -36,10 +36,10 @@ export function ResourceCard({
   };
 
   return (
-    <div className="group relative rounded-xl transition-transform duration-300 hover:scale-[1.02]">
+    <div className="group relative rounded-xl">
       <div className="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--card-hover-bg,theme(colors.white)),var(--card-hover-bg,theme(colors.white)))_padding-box,linear-gradient(135deg,hsl(229,100%,62%),hsl(229,100%,85%))_border-box] group-hover:opacity-100 dark:[--card-hover-bg:theme(colors.slate.800)] transition-all duration-300" />
       <div
-        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer h-[160px] transition-all duration-300 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_8px_16px_-4px_rgba(37,99,235,0.3)] dark:group-hover:shadow-[0_24px_50px_-12px_rgba(37,99,235,0.5)] bg-white/50 backdrop-blur-sm dark:bg-slate-800/50"
+        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer h-[160px] transition-all duration-300 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.1)] group-hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_8px_16px_-4px_rgba(37,99,235,0.3)] dark:group-hover:shadow-[0_24px_50px_-12px_rgba(37,99,235,0.5)] bg-white/50 dark:bg-slate-800/50"
         onClick={handleCardClick}
       >
         <TooltipProvider>
