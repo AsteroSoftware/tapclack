@@ -22,6 +22,17 @@ export const resources: { [key: string]: Resource[] } = {
       title: "How to Ask Questions the Smart Way",
       description: "Guide on how to ask technical questions effectively.",
       link: "http://www.catb.org/~esr/faqs/smart-questions.html"
+    },
+    {
+      title: "No Hello",
+      description: "Please don't say just hello in chat.",
+      link: "https://nohello.net/",
+      image: "/images/resources/nohello.png"
+    },
+    {
+      title: "The XY Problem",
+      description: "The XY Problem is a common issue in software development where a developer asks for help with a problem, but instead of providing the specific issue they're facing, they explain the broader context or the solution they've already tried.",
+      link: "https://xyproblem.info/"
     }
   ],
   'version-control': [
@@ -63,6 +74,11 @@ export const resources: { [key: string]: Resource[] } = {
       description: "Q&A platform for programmers.",
       link: "https://stackoverflow.com/",
       image: "/images/resources/stackoverflow.png"
+    },
+    {
+      title: "Cosmos",
+      description: "Custom keyboard configurator.",
+      link: "https://ryanis.cool/cosmos/",
     }
   ],
   'coding-challenges': [

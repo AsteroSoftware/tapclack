@@ -79,7 +79,7 @@ export function ResourceCard({
           <div className="flex-1 min-w-0 flex flex-col justify-center">
             <div className="max-h-[40px]">
               <h2 
-                className="font-display text-base text-slate-900 dark:text-white leading-tight line-clamp-2 cursor-pointer hover:text-primary dark:hover:text-primary transition-colors"
+                className="font-display text-base text-slate-900 dark:text-white leading-tight line-clamp-2 cursor-pointer"
                 onClick={handleTitleClick}
               >
                 {resource.title}
