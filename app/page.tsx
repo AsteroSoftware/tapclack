@@ -109,8 +109,6 @@ export default function EngineeringResources() {
   }
 
   const handleContributeClick = () => {
-    history.pushState("", document.title, window.location.pathname);
-    setHighlightedSection(null);
     scrollToContribute();
   }
 
